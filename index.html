@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>공용물품 대여 장부</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+    form { display: flex; flex-wrap: wrap; gap: .5rem; align-items: end; margin-bottom: 1.5rem; }
+    label { display: flex; flex-direction: column; font-size: .85rem; gap: .2rem; }
+    input, button { font: inherit; padding: .4rem .6rem; }
+    nav { display: flex; gap: .5rem; margin-bottom: .5rem; }
+    nav button.on { font-weight: bold; outline: 2px solid; }
+    .scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid #ddd; padding: .5rem; text-align: left; white-space: nowrap; }
+    tr.overdue td { color: #c00; background: #fee; }
+    .link { background: none; border: 0; padding: 0; color: #06c; text-decoration: underline; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>공용물품 대여 장부</h1>
+
+  <form id="form">
+    <label>물품명 <input name="item_name" placeholder="노트북" required></label>
+    <label>대여자 <input name="borrower" placeholder="홍길동" required></label>
+    <label>대여일 <input name="rented_at" type="date" required></label>
+    <label>반납 예정일 <input name="due_at" type="date"></label>
+    <button>대여 등록</button>
+  </form>
+
+  <nav>
+    <button data-tab="active">대여 중</button>
+    <button data-tab="returned">반납 완료</button>
+  </nav>
+  <p id="history" hidden><strong></strong> <button id="close">닫기</button></p>
+
+  <div class="scroll">
+    <table>
+      <thead><tr><th>물품명</th><th>대여자</th><th>대여일</th><th>반납 예정일</th><th>상태</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
