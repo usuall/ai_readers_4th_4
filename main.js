@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
 
-const { VITE_SUPABASE_URL: url, VITE_SUPABASE_ANON_KEY: key } = import.meta.env
+const { VITE_SUPABASE_URL: url, VITE_SUPABASE_KEY: key } = import.meta.env
 if (!url || !key) {
-  document.body.textContent = '환경변수 VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY 를 설정하세요 (.env 또는 Vercel 프로젝트 설정).'
+  document.body.textContent = '환경변수 VITE_SUPABASE_URL, VITE_SUPABASE_KEY 를 설정하세요 (.env 또는 Vercel 프로젝트 설정).'
   throw new Error('Supabase env missing')
 }
 const db = createClient(url, key)
